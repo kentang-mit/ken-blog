@@ -1,6 +1,6 @@
 <template>
   <div>
-  <article class="post">
+  <article class>
     <header id="header">
       <h1>{{ title }}</h1>
       <h4>{{ created }}</h4>

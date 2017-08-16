@@ -62,11 +62,11 @@ export default{
     }
   },
   created(){
-    this.fetchData();
+    //this.fetchData();
   },
   mounted: function () {
     //解决了在mounted执行时data异步没取到的问题
-    setTimeout(()=>{
+    this.fetchData().then(()=>{
       simplemde = new SimpleMDE({
       autoDownloadFontAwesome: false,
       element: document.getElementById("editor"),
@@ -75,21 +75,22 @@ export default{
       previewRender: function(plainText) {
         return marked(plainText); // Returns HTML from a custom parser
       },
+      });
+      simplemde.value(this.articleContent)
+      simplemde.codemirror.on("change", () => {
+        let value = simplemde.value();
+        if(this.articleContent === value){
+          return;
+        }
+        this.articleContent = value;
+      })
     });
-    simplemde.value(this.articleContent)
-    simplemde.codemirror.on("change", () => {
-      let value = simplemde.value();
-      if(this.articleContent === value){
-        return;
-      }
-      this.articleContent = value;
-    })
-  }, 100);
     
   },
   methods: {
     fetchData(){
-      articleApi.getArticle(this.$route.params.id).then(res => {
+      //return a promise, used in mounted
+      return articleApi.getArticle(this.$route.params.id).then(res => {
         if(res.data.success){
           if(res.data.article == null){
             this.articleTitle = '404 Not found';
@@ -104,6 +105,9 @@ export default{
           //currentTagList should be modified!
           this.$store.state.currentTagList = this.tagList;
         }
+        return new Promise((resolve, reject) => {
+          resolve(res);
+        });
       })
     },
     saveArticle(){
