@@ -1,0 +1,12 @@
+export const ADD_ARTICLE = 'ADD_ARTICLE';
+export const GET_ALL_ARTICLES = 'GET_ALL_ARTICLES';
+export const DELETE_ARTICLE = 'DELETE_ARTICLE';
+export const ADD_TAG = 'ADD_TAG';
+export const DELETE_TAG = 'DELETE_TAG';
+export const ADD_CATEGORY = 'ADD_CATEGORY';
+export const DELETE_CATEGORY = 'DELETE_CATEGORY'
+export const GET_ALL_CATEGORIES = 'GET_ALL_CATEGORIES'
+export const GET_ARTICLE = 'GET_ARTICLE';
+export const GET_ALL_TAGS = 'GET_ALL_TAGS';
+export const LOGIN = 'LOGIN';
+export const LOGOUT = 'LOGOUT';
