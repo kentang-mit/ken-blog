@@ -128,7 +128,7 @@ export default{
         tagList: this.tagList,
         category: this.category,
         abstract: abstract,
-        lastModified: new Date().toLocaleString()
+        lastModified: new Date(new Date().getTime() + 28800000)
       }
       const obj = {
         id: this.articleId,

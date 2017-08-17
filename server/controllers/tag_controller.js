@@ -3,8 +3,8 @@ const Tag = require('../models/tag.js')
 
 export async function createTag(ctx){
   let tagName = ctx.request.body.tagName,
-        created = new Date().toLocaleString(),
-        lastModified = new Date().toLocaleString();
+        created = new Date(new Date().getTime() + 28800000),
+        lastModified = new Date(new Date().getTime() + 28800000);
     const newTag = new Tag({
       tagName: tagName,
       created: created,

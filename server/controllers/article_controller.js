@@ -6,9 +6,9 @@ export async function createArticle(ctx){
     console.log(ctx.request.body);
     let title = ctx.request.body.title,
         content = ctx.request.body.content,
-        created = new Date().toLocaleString(),
+        created = new Date(new Date().getTime() + 28800000),
         tagList = ctx.request.body.tagList,
-        lastModified = new Date().toLocaleString(),
+        lastModified = new Date(new Date().getTime() + 28800000),
         category = ctx.request.body.category,
         abstract;
     let abstract_end_pos = content.indexOf('<!--more-->');

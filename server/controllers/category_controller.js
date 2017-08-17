@@ -3,8 +3,8 @@ const Category = require('../models/category.js')
 
 export async function createCategory(ctx){
   let categoryName = ctx.request.body.categoryName,
-    created = new Date().toLocaleString(),
-    lastModified = new Date().toLocaleString();
+    created = new Date(new Date().getTime() + 28800000),
+    lastModified = new Date(new Date().getTime() + 28800000);
 
   const newCategory = new Category({
     categoryName: categoryName,
